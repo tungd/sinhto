@@ -1,0 +1,94 @@
+* List order
+
+#+BEGIN_SRC http :pretty
+  GET http://localhost:8000/api/v1/orders/1
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+{
+  "id": 1,
+  "items": [
+    {
+      "id": 8,
+      "drink": "Bo",
+      "name": "Duc Anh",
+      "order": 1
+    },
+    {
+      "id": 7,
+      "drink": "Bo",
+      "name": "Hau",
+      "order": 1
+    },
+    {
+      "id": 6,
+      "drink": "Dau",
+      "name": "Tai",
+      "order": 1
+    },
+    {
+      "id": 1,
+      "drink": "Sapoche",
+      "name": "A Tung",
+      "order": 1
+    }
+  ],
+  "total": 85000.0,
+  "date": "2018-06-12T17:13:54.404967+07:00",
+  "status": "Closed"
+}
+#+end_example
+
+#+BEGIN_SRC http :pretty
+  GET http://localhost:8000/api/v1/shops/1
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+{
+  "id": 1,
+  "drinks": [
+    {
+      "id": 3,
+      "name": "Dau",
+      "price": "20000",
+      "shop": 1
+    },
+    {
+      "id": 2,
+      "name": "Bo",
+      "price": "20000",
+      "shop": 1
+    },
+    {
+      "id": 1,
+      "name": "Sapoche",
+      "price": "25000",
+      "shop": 1
+    }
+  ],
+  "name": "Sinh To",
+  "phone_number": "‭0988291242‬",
+  "address": ""
+}
+#+end_example
+
+#+BEGIN_SRC http :pretty
+  POST http://localhost:8000/api/v1/items
+  Content-Type: application/json
+
+  {
+    "name": "Tai",
+    "drink": 3,
+    "order": 1
+  }
+#+END_SRC
+
+#+RESULTS:
+: {
+:   "id": 6,
+:   "name": "Tai",
+:   "order": 1,
+:   "drink": 3
+: }
