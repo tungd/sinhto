@@ -2,6 +2,8 @@
 
 Application to help order sinhto.
 
+http://singto.cf/?order=1
+
 ## Requirements
 
 ## Development

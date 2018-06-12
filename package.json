@@ -9,6 +9,8 @@
     "build": "brunch build --production"
   },
   "dependencies": {
+    "date-fns": "^1.29.0",
+    "query-string": "^6.1.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "tachyons": "^4.10.0"
