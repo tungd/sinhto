@@ -25,7 +25,7 @@ SECRET_KEY = '^9tw=0a0dqx$1=(_xr702sm#6)*t5zg0rnr5u!^*t#p**oi9&t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('ENV', 'production') != 'production'
 
-ALLOWED_HOSTS = ['sinhto.cf']
+ALLOWED_HOSTS = ['sinhto.cf'] if not DEBUG else ['*']
 
 ADMINS = [('Tung', 'me@tungdao.com')]
 

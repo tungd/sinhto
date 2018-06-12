@@ -1,4 +1,4 @@
-# https://
+# http://sinhto.cf
 
 Application to help order sinhto.
 
