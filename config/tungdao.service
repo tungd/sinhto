@@ -1,0 +1,16 @@
+[Unit]
+Description=sinhto-app
+After=network-online.target
+Wants=network-online.target systemd-networkd-wait-online.service
+
+[Service]
+Restart=on-abnormal
+Environment=ENV=production
+Environment=PGDATABASE=sinhto
+Environment=PGUSER=root
+Environment=PGPASSWORD=root
+WorkingDirectory=/var/www/sinhto
+ExecStart=/root/.pyenv/shims/pipenv run ./manage.py runserver
+
+[Install]
+WantedBy=multi-user.target
