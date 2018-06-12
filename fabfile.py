@@ -46,12 +46,11 @@ def bootstrap():
 @task
 def deploy():
     with cd(PROJECT_ROOT):
-        run('git stash')
         run('git pull origin master')
 
         run('pipenv install')
         run('pipenv run ./manage.py migrate')
-        run('yarn')
-        run('npm run build')
+        # run('yarn')
+        # run('npm run build')
         run('pipenv run ./manage.py collectstatic --no-input')
-        sudo('supervisorctl restart vegetable_order_web')
+        sudo('systemctl restart sinhto')

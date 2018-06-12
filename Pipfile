@@ -8,6 +8,7 @@ django = "*"
 "psycopg2-binary" = "*"
 
 [dev-packages]
+"fabric3" = "*"
 
 [requires]
 python_version = "3.6"
