@@ -46,6 +46,7 @@ def bootstrap():
 @task
 def deploy():
     with cd(PROJECT_ROOT):
+        run('git checkout package-lock.json')
         run('git pull origin master')
 
         run('pipenv install')
