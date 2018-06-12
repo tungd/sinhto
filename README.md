@@ -8,6 +8,12 @@ http://singto.cf/?order=1
 
 ## Development
 
+## Tasks
+
+- Add note drink
+- Add who's buying
+- Add dashboard summarize how much each team spend
+
 ## License
 
 Copyright 2018 Tung Dao
