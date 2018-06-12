@@ -50,7 +50,7 @@ def deploy():
 
         run('pipenv install')
         run('pipenv run ./manage.py migrate')
-        # run('yarn')
-        # run('npm run build')
+        run('npm install')
+        run('npm run build')
         run('pipenv run ./manage.py collectstatic --no-input')
         sudo('systemctl restart sinhto')
