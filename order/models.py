@@ -4,6 +4,15 @@ from django.db import models
 class Order(models.Model):
     date = models.DateTimeField(auto_now=True)
 
+    OPEN = 'Open'
+    CLOSED = 'Closed'
+    STATUS = [
+        (OPEN, OPEN),
+        (CLOSED, CLOSED)
+    ]
+
+    status = models.CharField(max_length=255, choices=STATUS, default=OPEN)
+
     def __str__(self):
         return str(self.date)
 
