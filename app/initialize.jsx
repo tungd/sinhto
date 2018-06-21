@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
+
 import { render } from 'react-dom'
+import { BrowserRouter, HashRouter, Route, Switch, Link } from 'react-router-dom'
 
 import querystring from 'query-string'
 import formatDateTime from 'date-fns/format'
 
 
-class App extends Component {
+class Order extends Component {
 
   constructor(props) {
     super(props)
@@ -27,9 +29,7 @@ class App extends Component {
   }
 
   fetchOrder() {
-    const { order } = querystring.parse(window.location.search)
-
-    fetch(`/api/v1/orders/${order}`)
+    fetch(`/api/v1/orders/${this.props.match.params.id}`)
       .then(resp => resp.json())
       .then(order => {
         this.setState({ order, loading: false })
@@ -76,8 +76,6 @@ class App extends Component {
       summary[item.drink] += 1
       return summary
     }, {})
-
-    console.table(summary)
 
     return (
       <div className="mw7 center">
@@ -140,11 +138,25 @@ class App extends Component {
             </table>
           </div>
         </div>
-
-
       </div>
     )
   }
 }
 
-render(<App />, document.querySelector('#app'))
+class App extends Component {
+
+  render() {
+    return (
+      <div>
+        <Link to="/order/1">Order 1</Link>
+        <Route path="/order/:id" component={Order} />
+      </div>
+    )
+  }
+}
+
+render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.querySelector('#app'))
