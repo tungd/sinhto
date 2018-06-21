@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 from django.views.generic import TemplateView
 from inventory import views as inventory_views
 from order import views as order_views
@@ -12,5 +12,6 @@ urlpatterns = [
          order_views.OrderDetailView.as_view(), name='order_detail'),
     path('api/v1/items',
          order_views.CreateOrderItemView.as_view(), name='create_order_item'),
-    path('', TemplateView.as_view(template_name='index.html'), name='home'),
+    re_path(r'.*',
+            TemplateView.as_view(template_name='index.html'), name='home'),
 ]
