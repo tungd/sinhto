@@ -1,8 +1,8 @@
-# http://sinhto.cf
+# https://sinhto.cf
 
 Application to help order sinhto.
 
-http://singto.cf/?order=1
+https://singto.cf/
 
 ## Requirements
 
@@ -10,9 +10,11 @@ http://singto.cf/?order=1
 
 ## Tasks
 
-- Add note drink
-- Add who's buying
-- Add dashboard summarize how much each team spend
+- [ ] Add note to drink order
+- [ ] Add who's buying
+- [ ] Add dashboard summarize how much each team spend
+- [ ] Add edit drink
+- [ ] Switch to UUID for order
 
 ## License
 
