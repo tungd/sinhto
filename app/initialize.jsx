@@ -14,6 +14,7 @@ class Order extends Component {
     this.state = {
       loading: true,
       order: null,
+      name: '',
       menu: []
     }
   }
@@ -26,6 +27,8 @@ class Order extends Component {
       .then(shop => {
         this.setState({ menu: shop.drinks })
       })
+
+    FB.api('/me', ({ name }) => this.setState({ name }))
   }
 
   fetchOrder() {
@@ -61,7 +64,7 @@ class Order extends Component {
   }
 
   render() {
-    const { loading, order, menu } = this.state
+    const { loading, order, menu, name } = this.state
 
     if (loading) {
       return (
@@ -83,7 +86,7 @@ class Order extends Component {
 
         {order.status === 'Open' && (
            <form className="w-100 pv2 flex" onSubmit={e => this.handleSubmit(e)}>
-             <input name="name" type="text" placeholder="Name" className="pa2 f5 w-40" />
+             <input name="name" type="text" placeholder="Name" className="pa2 f5 w-40" readOnly={true} value={name} />
              <select name="drink" className="ml2 pa2 f4">
                {menu.map(item => (
                  <option value={item.id} key={item.id}>{item.name}</option>
@@ -145,7 +148,41 @@ class Order extends Component {
 
 class App extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      loggedIn: false
+    }
+  }
+
+  componentDidMount() {
+    FB.getLoginStatus(resp => {
+      if (resp.authResponse) {
+        this.setState({ loggedIn: resp.authResponse.userID })
+      }
+    })
+  }
+
+  handleLogin(e) {
+    e.preventDefault()
+    FB.login(resp => {
+      if (resp.authResponse) {
+        this.setState({ loggedIn: resp.authResponse.userID })
+      }
+    })
+  }
+
   render() {
+    const { loggedIn } = this.state
+
+    if (!loggedIn) {
+      return (
+        <div>
+          <button onClick={e => this.handleLogin(e)}>Log in with Facebook</button>
+        </div>
+      )
+    }
+
     return (
       <div>
         <Link to="/order/1">Order 1</Link>
@@ -155,8 +192,19 @@ class App extends Component {
   }
 }
 
-render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.querySelector('#app'))
+window.fbAsyncInit = function() {
+  FB.init({
+    appId : '228938784568321',
+    cookie : true,
+    xfbml : true,
+    version : 'v3.0'
+  });
+
+  FB.AppEvents.logPageView();
+
+  render((
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  ), document.querySelector('#app'))
+};

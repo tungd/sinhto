@@ -92,3 +92,313 @@
 :   "order": 1,
 :   "drink": 3
 : }
+
+* Authentication
+
+#+BEGIN_SRC http
+  GET http://localhost:8000/admin/
+  Cookie: sessionid=n59f8wpqjhfmxezvro9am7c02s18brv6;
+#+END_SRC
+
+#+RESULTS:
+#+begin_example
+HTTP/1.1 200 OK
+Date: Mon, 25 Jun 2018 03:11:29 GMT
+Server: WSGIServer/0.2 CPython/3.6.5
+Content-Type: text/html; charset=utf-8
+Expires: Mon, 25 Jun 2018 03:11:29 GMT
+Cache-Control: max-age=0, no-cache, no-store, must-revalidate
+X-Frame-Options: SAMEORIGIN
+Content-Length: 7395
+Vary: Cookie
+
+<!DOCTYPE html>
+
+<html lang="en-us" >
+<head>
+<title>Site administration | Django site admin</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/dashboard.css" />
+
+
+
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css" />
+
+
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+
+<body class=" dashboard"
+  data-admin-utc-offset="25200">
+
+<!-- Container -->
+<div id="container">
+
+
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+
+<h1 id="site-name"><a href="/admin/">Django administration</a></h1>
+
+        </div>
+
+
+        <div id="user-tools">
+
+                Welcome,
+                <strong>admin</strong>.
+
+
+
+                    <a href="/">View site</a> /
+
+
+
+
+
+
+                <a href="/admin/password_change/">Change password</a> /
+
+                <a href="/admin/logout/">Log out</a>
+
+        </div>
+
+
+
+    </div>
+    <!-- END Header -->
+
+
+
+
+
+
+
+    <!-- Content -->
+    <div id="content" class="colMS">
+
+        <h1>Site administration</h1>
+
+<div id="content-main">
+
+
+
+        <div class="app-auth module">
+        <table>
+        <caption>
+            <a href="/admin/auth/" class="section" title="Models in the Authentication and Authorization application">Authentication and Authorization</a>
+        </caption>
+
+            <tr class="model-group">
+
+                <th scope="row"><a href="/admin/auth/group/">Groups</a></th>
+
+
+
+                <td><a href="/admin/auth/group/add/" class="addlink">Add</a></td>
+
+
+
+                <td><a href="/admin/auth/group/" class="changelink">Change</a></td>
+
+            </tr>
+
+            <tr class="model-user">
+
+                <th scope="row"><a href="/admin/auth/user/">Users</a></th>
+
+
+
+                <td><a href="/admin/auth/user/add/" class="addlink">Add</a></td>
+
+
+
+                <td><a href="/admin/auth/user/" class="changelink">Change</a></td>
+
+            </tr>
+
+        </table>
+        </div>
+
+        <div class="app-inventory module">
+        <table>
+        <caption>
+            <a href="/admin/inventory/" class="section" title="Models in the Inventory application">Inventory</a>
+        </caption>
+
+            <tr class="model-drink">
+
+                <th scope="row"><a href="/admin/inventory/drink/">Drinks</a></th>
+
+
+
+                <td><a href="/admin/inventory/drink/add/" class="addlink">Add</a></td>
+
+
+
+                <td><a href="/admin/inventory/drink/" class="changelink">Change</a></td>
+
+            </tr>
+
+            <tr class="model-shop">
+
+                <th scope="row"><a href="/admin/inventory/shop/">Shops</a></th>
+
+
+
+                <td><a href="/admin/inventory/shop/add/" class="addlink">Add</a></td>
+
+
+
+                <td><a href="/admin/inventory/shop/" class="changelink">Change</a></td>
+
+            </tr>
+
+        </table>
+        </div>
+
+        <div class="app-order module">
+        <table>
+        <caption>
+            <a href="/admin/order/" class="section" title="Models in the Order application">Order</a>
+        </caption>
+
+            <tr class="model-order">
+
+                <th scope="row"><a href="/admin/order/order/">Orders</a></th>
+
+
+
+                <td><a href="/admin/order/order/add/" class="addlink">Add</a></td>
+
+
+
+                <td><a href="/admin/order/order/" class="changelink">Change</a></td>
+
+            </tr>
+
+        </table>
+        </div>
+
+
+</div>
+
+
+<div id="content-related">
+    <div class="module" id="recent-actions-module">
+        <h2>Recent actions</h2>
+        <h3>My actions</h3>
+
+
+
+            <ul class="actionlist">
+
+            <li class="changelink">
+
+                    <a href="/admin/order/order/1/change/">2018-06-12 10:13:54.404967+00:00</a>
+
+                <br/>
+
+                    <span class="mini quiet">Order</span>
+
+            </li>
+
+            <li class="changelink">
+
+                    <a href="/admin/order/order/1/change/">2018-06-12 09:39:34.716558+00:00</a>
+
+                <br/>
+
+                    <span class="mini quiet">Order</span>
+
+            </li>
+
+            <li class="changelink">
+
+                    <a href="/admin/order/order/1/change/">2018-06-12 09:23:11.262458+00:00</a>
+
+                <br/>
+
+                    <span class="mini quiet">Order</span>
+
+            </li>
+
+            <li class="changelink">
+
+                    <a href="/admin/order/order/1/change/">2018-06-12 09:22:59.433093+00:00</a>
+
+                <br/>
+
+                    <span class="mini quiet">Order</span>
+
+            </li>
+
+            <li class="addlink">
+
+                    <a href="/admin/order/order/1/change/">2018-06-12 09:12:41.561036+00:00</a>
+
+                <br/>
+
+                    <span class="mini quiet">Order</span>
+
+            </li>
+
+            <li class="addlink">
+
+                    <a href="/admin/inventory/drink/3/change/">Dau</a>
+
+                <br/>
+
+                    <span class="mini quiet">Drink</span>
+
+            </li>
+
+            <li class="addlink">
+
+                    <a href="/admin/inventory/drink/2/change/">Bo</a>
+
+                <br/>
+
+                    <span class="mini quiet">Drink</span>
+
+            </li>
+
+            <li class="addlink">
+
+                    <a href="/admin/inventory/drink/1/change/">Sapoche</a>
+
+                <br/>
+
+                    <span class="mini quiet">Drink</span>
+
+            </li>
+
+            <li class="addlink">
+
+                    <a href="/admin/inventory/shop/1/change/">Sinh To</a>
+
+                <br/>
+
+                    <span class="mini quiet">Shop</span>
+
+            </li>
+
+            </ul>
+
+    </div>
+</div>
+
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    <div id="footer"></div>
+</div>
+<!-- END Container -->
+
+</body>
+</html>
+#+end_example
