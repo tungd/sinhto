@@ -27,4 +27,6 @@ class OrderSerializer(serializers.ModelSerializer):
         depth = 1
 
     def get_total(self, order):
-        return sum([item.drink.price for item in order.items.all()])
+        total = sum([item.drink.price
+                     for item in order.items.all()])
+        return str(total)
