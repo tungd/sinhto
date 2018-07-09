@@ -1,9 +1,5 @@
-import json
-
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
-
-from . import models, serializers
 
 
 class OrderConsumer(WebsocketConsumer):
@@ -33,8 +29,5 @@ class OrderConsumer(WebsocketConsumer):
     #     serializer = serializers.OrderSerializer(order)
     #     self.send(text_data=json.dumps(serializer.data))
 
-    def order_update(self, data):
-        order_id = data['order_id']
-        order = models.Order.objects.get(pk=order_id)
-        serializer = serializers.OrderSerializer(order)
-        self.send(text_data=json.dumps(serializer.data))
+    def order_update(self, message):
+        self.send(text_data=message['data'])

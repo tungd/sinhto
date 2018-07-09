@@ -1,6 +1,6 @@
 from asgiref.sync import async_to_sync
 from channels.layers import get_channel_layer
-from rest_framework import generics
+from rest_framework import generics, renderers
 
 from . import models, serializers
 
@@ -14,12 +14,17 @@ class CreateOrderItemView(generics.CreateAPIView):
     queryset = models.OrderItem.objects.all()
     serializer_class = serializers.CreateOrderItemSerializer
 
-    def create(self, *args, **kwargs):
-        response = super().create(*args, **kwargs)
+    def perform_create(self, serializer):
+        super().perform_create(serializer)
 
         channel_layer = get_channel_layer()
-        async_to_sync(channel_layer.group_send)(
-            'order_2', {'type': 'order.update', 'order_id': 2}
-        )
+        order = serializer.instance.order
+        serializer = serializers.OrderSerializer(order)
+        renderer = renderers.JSONRenderer()
 
-        return response
+        async_to_sync(channel_layer.group_send)(
+            'order_{}'.format(order.pk), {
+                'type': 'order.update',
+                'data': str(renderer.render(serializer.data), 'utf-8')
+            }
+        )
