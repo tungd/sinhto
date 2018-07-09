@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'channels',
     'inventory',
     'order',
 ]
@@ -72,7 +73,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'sinhto.wsgi.application'
-
+ASGI_APPLICATION = 'sinhto.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
