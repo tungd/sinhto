@@ -8,6 +8,7 @@ django = "*"
 "psycopg2-binary" = "*"
 djangorestframework = "*"
 channels = "*"
+channels-redis = "*"
 
 [dev-packages]
 "fabric3" = "*"
