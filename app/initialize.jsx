@@ -26,6 +26,12 @@ class Order extends Component {
       .then(shop => {
         this.setState({ menu: shop.drinks })
       })
+
+    const url = `ws://localhost:8000/ws/${this.props.match.params.id}`
+    const socket = new WebSocket(url)
+    socket.addEventListener('message', message => this.setState({
+      order: JSON.parse(message.data)
+    }))
   }
 
   fetchOrder() {
@@ -46,18 +52,7 @@ class Order extends Component {
       method: 'POST',
       body: form
     }).then(resp => resp.json())
-      .then(_ => this.fetchOrder())
-
-    /* fetch('/api/v1/items', {
-     *   method: 'POST',
-     *   body: JSON.stringify({
-     *     name: e.target.name.value,
-     *     drink: e.target.drink.value
-     *   }),
-     *   headers: {
-     *     'Content-Type': 'application/json'
-     *   }
-     * }).then(resp => resp.json()) */
+    /* .then(_ => this.fetchOrder()) */
   }
 
   render() {
